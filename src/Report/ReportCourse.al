@@ -42,32 +42,32 @@ report 50100 ReportRDL
 
     requestpage
     {
-        layout
-        {
-            // area(Content)
-            // {
-            //     group(GroupName)
-            //     {
-            //         field(Name; SourceExpression)
-            //         {
-            //             ApplicationArea = All;
+        // layout
+        // {
+        //     area(Content)
+        //     {
+        //         group(GroupName)
+        //         {
+        //             field(Name; SourceExpression)
+        //             {
+        //                 ApplicationArea = All;
 
-            //         }
-            //     }
-            // }
-        }
+        //             }
+        //         }
+        //     }
+        // }
 
-        actions
-        {
-            area(processing)
-            {
-                action(ActionName)
-                {
-                    ApplicationArea = All;
+        // actions
+        // {
+        //     area(processing)
+        //     {
+        //         action(ActionName)
+        //         {
+        //             ApplicationArea = All;
 
-                }
-            }
-        }
+        //         }
+        //     }
+        // }
     }
 
     rendering
