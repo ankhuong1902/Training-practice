@@ -5,8 +5,6 @@ report 50100 ReportRDL
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-
-
     DefaultRenderingLayout = LayoutRDL;
 
 
