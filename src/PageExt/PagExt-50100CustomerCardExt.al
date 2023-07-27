@@ -25,15 +25,6 @@ pageextension 50101 "Customer Card Extension" extends "Customer Card"
                     CallUpdateCreditLimit();
                 end;
             }
-            // action(TestProcedure)
-            // {
-            //     Caption = 'Test';
-            //     ApplicationArea = All;
-            //     trigger OnAction()
-            //     begin
-            //         Message('value is %1', Rec.CalculateCreditLimit);
-            //     end;
-            // }
         }
     }
     local procedure CallUpdateCreditLimit()
