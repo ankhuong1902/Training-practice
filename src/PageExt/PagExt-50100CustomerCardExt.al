@@ -22,29 +22,32 @@ pageextension 50101 "Customer Card Extension" extends "Customer Card"
                 PromotedIsBig = true;
                 trigger OnAction()
                 begin
-                    CallUpdateCreditLimit();
+                    CallUpdateCreditLimit(rec);
                 end;
             }
         }
     }
-    local procedure CallUpdateCreditLimit()
+    local procedure CallUpdateCreditLimit(var c: Record Customer)
     var
         lCreditLimitCalculated: Decimal;
         lCreditLimitActual: Decimal;
+
     begin
-        lCreditLimitCalculated := Rec.CalculateCreditLimit();
-        lCreditLimitActual := rec."Credit Limit (LCY)";
+        lCreditLimitCalculated := c.CalculateCreditLimit(c);
+        lCreditLimitCalculated := Round(lCreditLimitCalculated / 10000) * 10000;
+        lCreditLimitActual := c."Credit Limit (LCY)";
         if (lCreditLimitActual = lCreditLimitCalculated) then begin
             Message(TextUpToDate);
             exit;
         end
         else begin
-            if (Confirm(TextConfirm, true, Rec.CalculateCreditLimit())) = false then begin
+            if (Confirm(TextConfirm, true, lCreditLimitCalculated)) = false then begin
                 exit;
             end
             else begin
-                Rec.UpdateCreditLimit(lCreditLimitCalculated);
+                c.UpdateCreditLimit(lCreditLimitCalculated, c);
                 Message(TextRounded);
+                Message(c."No.");
             end;
         end;
 

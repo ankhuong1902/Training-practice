@@ -18,7 +18,7 @@
             "enableSqlInformationDebugger": true,
             "tenant": "default",
             "usePublicURLFromServer": true,
-            "startupCompany": "khuong_training",
+            //"startupCompany": "khuong_training",
             "schemaUpdateMode": "ForceSync"
         }
     ]

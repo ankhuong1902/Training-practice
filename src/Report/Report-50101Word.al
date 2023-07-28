@@ -14,28 +14,23 @@ report 50101 ReportWord
             //DataItemTableView = SORTING("Name");
             column(Code; Code)
             {
-
             }
             column(Name; Name)
             {
             }
             column(Description; Description)
             {
-
             }
             column(Type; Type)
             {
-
             }
             column(Duration; Duration)
             {
-
             }
             column(Price; Price) { }
             column(Active; Active) { }
             column(Difficulty; Difficulty)
             {
-
             }
             column(Passing_Rate; "Passing Rate") { }
         }

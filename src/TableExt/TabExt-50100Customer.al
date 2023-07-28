@@ -14,22 +14,22 @@ tableextension 50100 "Customer Extension" extends Customer
     /// UpdateCreditLimit.
     /// </summary>
     /// <param name="NewCreditLimit">VAR Decimal.</param>
-    internal procedure UpdateCreditLimit(var NewCreditLimit: Decimal)
+    internal procedure UpdateCreditLimit(var NewCreditLimit: Decimal; var c: record Customer)
     var
     begin
         NewCreditLimit := Round(NewCreditLimit / 10000) * 10000;
-        if (NewCreditLimit > 0) then
-            Rec.Validate("Credit Limit (LCY)", NewCreditLimit);
-        //rec.SetRange("No.", c."No.");
-        if rec.FindSet() then
-            //repeat
-                rec."Credit Limit (LCY)" := NewCreditLimit;
-        rec.Modify(true);
-        //until rec.Next() = 0;
+        if (NewCreditLimit >= 0) then
+            c.Validate("Credit Limit (LCY)", NewCreditLimit);
+        c.SetRange("No.", c."No.");
+        if c.FindSet() then
+            repeat
+                c."Credit Limit (LCY)" := NewCreditLimit;
+                c.Modify(true);
+            until c.Next() = 0;
         //Message('%1 %2', NewCreditLimit, rec."Credit Limit (LCY)");
     end;
 
-    internal procedure CalculateCreditLimit(): Decimal;
+    internal procedure CalculateCreditLimit(var c: record Customer): Decimal;
     var
         //Cust: Record Customer;
         SalesLCY: Decimal;
@@ -40,7 +40,8 @@ tableextension 50100 "Customer Extension" extends Customer
         SalesLCY := 0;
         lDateFrom := 20250115D;
         lDateTo := 20250122D;
-        "Cust Ledger Entry".SetRange("Customer No.", rec."No.");
+        "Cust Ledger Entry".SetRange("Customer No.", c."No.");
+        // Message(c."No.");
         //"Cust Ledger Entry".SetRange("Sales (LCY)"", Cust."No.");
         "Cust Ledger Entry".SetRange("Posting Date", lDateFrom, lDateTo);
         If "Cust Ledger Entry".FindSet() then begin
