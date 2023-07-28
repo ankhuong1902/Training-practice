@@ -47,21 +47,26 @@ page 50102 "My Test Page 1"
                 begin
                     if (gValue1 > gValue2) then
                         gResult := true;
-                    Reset();
                 end;
+            }
+            action(Reset)
+            {
+                ApplicationArea = All;
+                trigger OnAction()
+                begin
+                    gValue1 := 0;
+                    gValue2 := 0;
+                    gResult := false
+                end;
+
+
             }
         }
     }
     /// <summary>
     /// Reset.
     /// </summary>
-    procedure Reset()
-    begin
-        Sleep(10000);
-        gValue1 := 0;
-        gValue2 := 0;
-        gResult := false;
-    end;
+
 
     var
         gValue1: Integer;

@@ -3,7 +3,7 @@
 /// </summary>
 page 50103 "CustomerOverview List"
 {
-    PageType = Card;
+    PageType = List;
     ApplicationArea = All;
     UsageCategory = Administration;
     SourceTable = "CustomerOverview";

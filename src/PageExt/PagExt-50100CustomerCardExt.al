@@ -37,17 +37,16 @@ pageextension 50101 "Customer Card Extension" extends "Customer Card"
         lCreditLimitCalculated := Round(lCreditLimitCalculated / 10000) * 10000;
         lCreditLimitActual := c."Credit Limit (LCY)";
         if (lCreditLimitActual = lCreditLimitCalculated) then begin
-            Message(TextUpToDate);
+            Dialog.Message(TextUpToDate);
             exit;
         end
         else begin
-            if (Confirm(TextConfirm, true, lCreditLimitCalculated)) = false then begin
+            if (Dialog.Confirm(TextConfirm, true, lCreditLimitCalculated)) = false then begin
                 exit;
             end
             else begin
                 c.UpdateCreditLimit(lCreditLimitCalculated, c);
-                Message(TextRounded);
-                Message(c."No.");
+                Dialog.Message(TextRounded);
             end;
         end;
 

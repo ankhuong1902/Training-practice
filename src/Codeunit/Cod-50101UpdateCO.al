@@ -5,44 +5,44 @@ codeunit 50101 UpdateCO
 {
     trigger OnRun()
     begin
-        UpdateCustomerOverview();
+        UpdatelCustomerOverview();
     end;
 
-    local PROCEDURE UpdateCustomerOverview()
-    BEGIN
-        Customer.Reset();
-        Customer.FindSet();
+    local procedure UpdatelCustomerOverview()
+    begin
+        lCustomer.Reset();
+        lCustomer.FindSet();
         repeat
             // Step a: Get data from GL/Entry table
-            GLEntry.SETRANGE("Source Type", GLEntry."Source Type"::Customer);
-            GLEntry.SETRANGE("Source Code", 'SALES');
-            GLEntry.SETRANGE("Source No.", Customer."No.");
-            IF GLEntry.FindSet() THEN BEGIN
-                REPEAT
-                    // Step b: Insert the data into the CustomerOverview table
-                    CustomerOverview.Init();
-                    CustomerOverview."Entry No." := CustomerOverview."Entry No." + 1;
-                    CustomerOverview."Customer No." := Customer."No.";
-                    CustomerOverview."Customer Name" := Customer."Name";
-                    CustomerOverview."Source Code" := "Source Code".Code;
-                    CustomerOverview."Customer Name" := Customer."Name";
-                    CustomerOverview."Amount" := GLEntry."Amount";
-                    CustomerOverview."LastRunDate" := CURRENTDATETIME;
-                    CustomerOverview.INSERT(TRUE);
+            lGlEntry.SETRANGE("Source Type", lGlEntry."Source Type"::Customer);
+            lGlEntry.SETRANGE("Source Code", 'SALES');
+            lGlEntry.SETRANGE("Source No.", lCustomer."No.");
+            IF lGlEntry.FindSet() then begin
+                repeat
+                    // Step b: Insert the data into the lCustomerOverview table
+                    lCustomerOverview.Init();
+                    lCustomerOverview."Entry No." := lCustomerOverview."Entry No." + 1;
+                    lCustomerOverview."Customer No." := lCustomer."No.";
+                    lCustomerOverview."Customer Name" := lCustomer."Name";
+                    lCustomerOverview."Source Code" := "lSource Code".Code;
+                    lCustomerOverview."Customer Name" := lCustomer."Name";
+                    lCustomerOverview."Amount" := lGlEntry."Amount";
+                    lCustomerOverview."LastRunDate" := CurrentDateTime;
+                    lCustomerOverview.Insert(true);
 
-                UNTIL GLEntry.NEXT = 0;
-            END;
-        until Customer.Next = 0;
+                until lGlEntry.NEXT = 0;
+            end;
+        until lCustomer.Next = 0;
 
         Message('ok');
 
-    END;
+    end;
 
-    VAR
-        GLEntry: Record "G/L Entry";
-        CustomerOverview: Record "CustomerOverview";
-        Customer: Record Customer;
-        "Source Code": Record "Source Code";
+    var
+        lGlEntry: Record "G/L Entry";
+        lCustomerOverview: Record "CustomerOverview";
+        lCustomer: Record Customer;
+        "lSource Code": Record "Source Code";
 
 
 

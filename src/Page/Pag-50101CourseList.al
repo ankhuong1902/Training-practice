@@ -73,6 +73,16 @@ page 50101 "Course List"
                     Xmlport.run(50101, false, false);
                 end;
             }
+            action("Print")
+            {
+                ApplicationArea = All;
+                trigger OnAction()
+                var
+                    r: Report ReportRDL;
+                begin
+                    r.Run();
+                end;
+            }
             action(RunCodeunit)
             {
                 ApplicationArea = All;

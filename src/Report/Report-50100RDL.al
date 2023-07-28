@@ -12,6 +12,7 @@ report 50100 ReportRDL
         dataitem(Course; Course)
         {
             //DataItemTableView = SORTING("Name");
+            RequestFilterFields = Type;
             column(Code; Code)
             {
 
