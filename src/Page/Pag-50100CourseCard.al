@@ -26,7 +26,6 @@ page 50100 "Course Card"
                 field(Description; rec.Description)
                 {
                     ApplicationArea = All;
-                    //FieldPropertyName = FieldPropertyValue;
                 }
                 field(Duration; Rec.Duration)
                 {
