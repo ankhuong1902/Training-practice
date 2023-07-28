@@ -1,11 +1,11 @@
 /// <summary>
 /// Report ReportRDL (ID 50100).
 /// </summary>
-report 50100 ReportRDL
+report 50101 ReportWord
 {
     UsageCategory = ReportsAndAnalysis;
     ApplicationArea = All;
-    DefaultRenderingLayout = LayoutRDL;
+    DefaultRenderingLayout = LayoutWord;
     dataset
     {
 
@@ -47,11 +47,6 @@ report 50100 ReportRDL
 
     rendering
     {
-        layout(LayoutRDL)
-        {
-            Type = RDLC;
-            LayoutFile = 'mylayout.rdl';
-        }
         layout(LayoutWord)
         {
             Type = Word;

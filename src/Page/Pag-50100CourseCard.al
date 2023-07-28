@@ -75,6 +75,19 @@ page 50100 "Course Card"
 
                 end;
             }
+            action(Print)
+            {
+                ApplicationArea = All;
+                trigger OnAction()
+                var
+                    lReport: Report "ReportWord";
+                    lRec_Course: Record "Course";
+                begin
+                    lRec_Course.SetRange(Code, Rec.Code);
+                    lRec_Course.FindSet();
+                    REPORT.RunModal(Report::"ReportWord", true, true, lRec_Course);
+                end;
+            }
         }
     }
 

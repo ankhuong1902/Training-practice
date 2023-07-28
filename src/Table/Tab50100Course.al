@@ -12,7 +12,7 @@ table 50100 Course
             DataClassification = ToBeClassified;
 
         }
-        field(20; Name; Text[37])
+        field(20; Name; Text[30])
         {
             DataClassification = ToBeClassified;
         }
