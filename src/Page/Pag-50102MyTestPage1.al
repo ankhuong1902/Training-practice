@@ -63,9 +63,6 @@ page 50102 "My Test Page 1"
             }
         }
     }
-    /// <summary>
-    /// Reset.
-    /// </summary>
 
 
     var
